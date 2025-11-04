@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Users Table</h2>
+  <div class="container">
+  <div class="row">
+  <div class="col-md-6">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Second Name</th>
+        <th>Age</th>
+        <th>update</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for u in users %}
+      <tr>
+        <td>{{ u.firstName }}</td>
+        <td>{{ u.secondName }}</td>
+        <td>{{ u.age }}</td>
+        <td> 
+            <a href="{% url 'update' u.id %}" class="btn btn-primary">Update</a>
+            <a href="{% url 'delete' u.id %}" class="btn btn-danger">Delete</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="3">No users found.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  </div>
+  </div>
+{% endblock content %}
